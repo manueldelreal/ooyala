@@ -1,5 +1,6 @@
 # Ooyala tech support position code challenge
 
+Check the current deployed version in here: https://ooyalarecruit.herokuapp.com/
 
 ###PREREQUISITES:###
 
