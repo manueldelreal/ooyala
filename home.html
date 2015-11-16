@@ -171,192 +171,145 @@
                         <h2>Test our embedded video player</h2>
                         <!-- Player Placement -->
                         <br>
-                        <div id='playerwrapper' style='width:640px;height:480px'>
+                        <div id='playerwrapper' style="width:640px;height:480px">
                         </div>
-                        <button id="playButton" value="Play" disabled="true" class="btn-custom">Play</button>
-                        <button id="pauseButton" value="Pause" disabled="true" class="btn-custom">Pause</button>
-                        <button id="nextButton" value="Next" disabled="true" class="btn-custom">Next Video</button>
-                        <script>
-                        var embedCodes = ['M3eTJ2eDo8Nn2Rjl2GFQWyKimaECtKC2',
-                        "Bjc3l1eDoRUx8Upp_imUOCInGMNGWx_i"];
-                        var currentIndex = 0;
-                        var oplayer = null;
-
-                        function onPlayButtonClicked() {
-                            oplayer.play();
-                        }
-
-                        function onPauseButtonClicked() {
-                            oplayer.pause();
-                        }
-
-                        function createPlayer(OO) {
-                            OO.$("#playerwrapper").html('');
-                            var embedCode = embedCodes[currentIndex];
-
-                            oplayer = OO.Player.create('playerwrapper', embedCode, {
-                                width: '100%',
-                                height: '100%',
-                                autoplay: true,
-                                layout: 'chromeless',
-                                adSetCode:'customaddset'
-                            });
-                            oplayer.mb.subscribe(OO.EVENTS.PLAYING, "ie_iframe", onVideoPlaying);
-
-                        }
-
-                        function onNextButtonClicked() {
-                            currentIndex = (currentIndex + 1) % embedCodes.length;
-                            oplayer.setEmbedCode(embedCodes[currentIndex]);
-                            oplayer.play();
-                        }
-
-
-                        OO.ready(function (OO) {
-                            var playButton = document.getElementById("playButton");
-                            playButton.disabled = false;
-                            playButton.onclick = onPlayButtonClicked;
-
-                            var pauseButton = document.getElementById("pauseButton");
-                            pauseButton.disabled = false;
-                            pauseButton.onclick = onPauseButtonClicked;
-
-                            var nextButton = document.getElementById("nextButton");
-                            nextButton.disabled = false;
-                            nextButton.onclick = onNextButtonClicked;
-                            createPlayer(OO);
-                        });
-
-                        function receiveMessage(e) {
-                    // Notification from default.html
-                    console.log("from parent", e.data);
-                }
-
-                </script>
-                <noscript>
-                    <div>Please enable Javascript to watch this video</div>
-                </noscript>
-            </div>
-        </div>
-    </section>
-    <!--Testimonials Section-->
-    <section class=" testimonial-bg">
-        <div id="testimonial" class="flexslider ">
-            <div class="container">
-                <div class="col-lg-12 testimonial-title">Loved by over 100,000 people worldwide</div>
-                <ul class="slides">
-                    <li>
-
-                        <div class="testimonial-photo"><img src="images/body/testimonial-img.png" alt=""></div>
-                        <div class="container">
-                            <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 testimonial-content">
-                                <p>Ooyala is helping us build our next generation digital video platform and keeping us at the forefront of TV, digital, and mobile experiences.</p>
-                                <p><span>
-                                    Kevin Conroy - <a href="http://univision.com">Univision</a> </span>
-                                </p>
+                        <!--Include player js and functions-->
+                        <script src="js/player.js"></script>
+                        <div id="sidebar">
+                            <h3>Related videos</h3>
+                            <div class="thumb-wrapper">
+                                <span class="thumb-related" tabindex="0">
+                                    <img id="thumbButton" src="images/body/relatedThumb.jpeg" alt="" aria-hidden="true" width="120" height="90">
+                                </span>
                             </div>
                         </div>
-                    </li>
-                    <li>
-
-                        <div class="testimonial-photo"><img src="images/body/testimonial-img2.jpg" alt=""></div>
-                        <div class="container">
-                            <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 testimonial-content">
-                                <p>Ooyala provides the underlying technology for large media enterprises like ESPN and Bloomberg. We’re working with customers that are reaching over 150,000,000 users on a monthly basis, and we need to be able to process that data in real-time, to determine the health of our overall systems.</p>
-                                <p><span>
-                                    Sean Knapp - <a href="http://ooyala.com">Ooyala</a> </span>
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-
-                        <div class="testimonial-photo"><img src="images/body/testimonial-img3.jpg" alt=""></div>
-                        <div class="container">
-                            <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 testimonial-content">
-                                <p>At Sumo, one of the really valuable items was that we knew it was cloud-based. And consequently, then very scaleable. We consider them not just one of our vendors, but actually a really key partner as we build and evolve our systems. We’re very excited about working with them to evolve the overall product offering, in ways that provide unique value beyond anything else that can be found in the market.</p>
-                                <p><span>
-                                    Big Yokozuna - <a href="http://sumo.com">Sumo.com</a> </span>
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-
-                </ul>
-            </div>
-
-        </div>
-    </section>
-    <!--Contact Section-->
-    <section id="contact">
-        <div class="container">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contact">
-                <h1>Get in touch</h1>
-                <h2>Have a question? do not hesitate to contact me.</h2>
-            </div>
-        </div>
-        <div class="container contact-info">
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-                <i class="fa fa-phone"></i>1.562.661.8148
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-                <i class="fa fa-envelope"></i>manueldelreal@gmail.com
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-                <i class="fa fa-map-marker"></i>Paramount, California, USA
-            </div>
-        </div>
-        <div class="container contact-form">
-            <form id="contactmsg" action method="post">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <input name="name" type="text" id="name" placeholder="Enter Your Name" >
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <input name="email" type="text" id="email" placeholder="Enter Your Email" >
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <input name="phone" type="text" id="phone" placeholder="Enter Your Phone" >
+                        <button id="playButton" value="Play" disabled="true" class="btn-custom">&#9658&#10073&#10073</button>
+                        <button id="nextButton" value="Next" disabled="true" class="btn-custom">&#8614</button>
+                                <div id="status" style="width:100%; height:50px; color:red;"> </div>
+                        <noscript>
+                            <div>Please enable Javascript to watch this video</div>
+                        </noscript>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <textarea name="detail" id="detail" cols="" rows="8" placeholder="Message"></textarea>
+            </section>
+            <!--Testimonials Section-->
+            <section class=" testimonial-bg">
+                <div id="testimonial" class="flexslider ">
+                    <div class="container">
+                        <div class="col-lg-12 testimonial-title">Loved by over 100,000 people worldwide</div>
+                        <ul class="slides">
+                            <li>
+
+                                <div class="testimonial-photo"><img src="images/body/testimonial-img.png" alt=""></div>
+                                <div class="container">
+                                    <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 testimonial-content">
+                                        <p>Ooyala is helping us build our next generation digital video platform and keeping us at the forefront of TV, digital, and mobile experiences.</p>
+                                        <p><span>
+                                            Kevin Conroy - <a href="http://univision.com">Univision</a> </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+
+                                <div class="testimonial-photo"><img src="images/body/testimonial-img2.jpg" alt=""></div>
+                                <div class="container">
+                                    <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 testimonial-content">
+                                        <p>Ooyala provides the underlying technology for large media enterprises like ESPN and Bloomberg. We’re working with customers that are reaching over 150,000,000 users on a monthly basis, and we need to be able to process that data in real-time, to determine the health of our overall systems.</p>
+                                        <p><span>
+                                            Sean Knapp - <a href="http://ooyala.com">Ooyala</a> </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+
+                                <div class="testimonial-photo"><img src="images/body/testimonial-img3.jpg" alt=""></div>
+                                <div class="container">
+                                    <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 testimonial-content">
+                                        <p>At Sumo, one of the really valuable items was that we knew it was cloud-based. And consequently, then very scaleable. We consider them not just one of our vendors, but actually a really key partner as we build and evolve our systems. We’re very excited about working with them to evolve the overall product offering, in ways that provide unique value beyond anything else that can be found in the market.</p>
+                                        <p><span>
+                                            Big Yokozuna - <a href="http://sumo.com">Sumo.com</a> </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+            <!--Contact Section-->
+            <section id="contact">
+                <div class="container">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contact">
+                        <h1>Get in touch</h1>
+                        <h2>Have a question? do not hesitate to contact me.</h2>
                     </div>
                 </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center"><input class="btn-message" type="button" value="Send Message" id="sendmsg"></div>
-            </form>
-        </div>
-        <div id="contact-message" style="display:none"></div>
-    </section>
-    <!-- Footer Section-->
-    <section id="footer">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 footer">
-          <div class="footer-nav text-center">
-            <ul class="navi">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#video">VideoPlayer</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-        <div class="social-icons text-center">
-            <ul>
-                <li><a href="https://twitter.com/ih8zombie"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="https://plus.google.com/u/0/105157960522348329894/"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="https://mx.linkedin.com/in/manueldelreal"><i class="fa fa-linkedin"></i></a></li>
-            </ul>
-        </div>
-        <div class="copyright">Copyright © 2015 Manuel Del Real. All rights reserved.</div>
-    </div>
-</section>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/custom.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/jquery.easing.1.3.js"></script>
-<script defer src="js/jquery.flexslider-min.js"></script>
+                <div class="container contact-info">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+                        <i class="fa fa-phone"></i>1.562.661.8148
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+                        <i class="fa fa-envelope"></i>manueldelreal@gmail.com
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+                        <i class="fa fa-map-marker"></i>Paramount, California, USA
+                    </div>
+                </div>
+                <div class="container contact-form">
+                    <form id="contactmsg" action method="post">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <input name="name" type="text" id="name" placeholder="Enter Your Name" >
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <input name="email" type="text" id="email" placeholder="Enter Your Email" >
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <input name="phone" type="text" id="phone" placeholder="Enter Your Phone" >
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <textarea name="detail" id="detail" cols="" rows="8" placeholder="Message"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center"><input class="btn-message" type="button" value="Send Message" id="sendmsg"></div>
+                    </form>
+                </div>
+                <div id="contact-message" style="display:none"></div>
+            </section>
+            <!-- Footer Section-->
+            <section id="footer">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 footer">
+                  <div class="footer-nav text-center">
+                    <ul class="navi">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#video">VideoPlayer</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="social-icons text-center">
+                    <ul>
+                        <li><a href="https://twitter.com/ih8zombie"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://plus.google.com/u/0/105157960522348329894/"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="https://mx.linkedin.com/in/manueldelreal"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+                <div class="copyright">Copyright © 2015 Manuel Del Real. All rights reserved.</div>
+            </div>
+        </section>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/custom.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <script defer src="js/jquery.flexslider-min.js"></script>
 
-</body>
-</html>
+    </body>
+    </html>
