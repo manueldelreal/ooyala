@@ -1126,8 +1126,8 @@ margin-bottom: 20px;
 
 #playerwrapper
 {
-    margin: left;
-    width: 60%;
+    float: left;
+    width: 100%;
     padding: 10px;
     text-align: center;
 }
@@ -1148,4 +1148,10 @@ margin-bottom: 20px;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.33);
   -webkit-font-smoothing: antialiased;
   padding: 10px;
+}
+
+#sidebar {
+  float: right;
+  width: 200px;
+  margin-right: -200px;
 }

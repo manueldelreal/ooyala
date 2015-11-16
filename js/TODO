@@ -1,0 +1,35 @@
+/* there is still work to do to implement ads playing through js logic
+    rather than from an adset in the OO.Player.Create function */
+    
+function adInsert() {
+
+        var adEmbedCode = adEmbedCodes[adCurrentIndex];
+        var buffer = 0;
+        /* Preroll */
+        oplayer.setEmbedCode(adEmbedCode);
+        oplayer.play();
+        adCurrentIndex = (adCurrentIndex + 1) % adEmbedCodes.length;
+        oplayer.setEmbedCode(embedCodes[currentIndex]);
+        oplayer.play();
+
+        /* midroll */
+        setTimeout(function() { oplayer.setEmbedCode(adEmbedCode) }, 60000);
+        buffer = oplayer.getPlayHeadTime();
+        oplayer.play();
+        adCurrentIndex = (adCurrentIndex + 1) % adEmbedCodes.length;
+        oplayer.setEmbedCode(embedCodes[currentIndex]);
+        oplayer.play();
+        oplayer.seek( buffer );
+
+
+        /* postroll */
+        oplayer.mb.intercept(OO.EVENTS.PLAYED, "testMBevents", function(eventName) {
+        oplayer.setEmbedCode(adEmbedCode);
+        oplayer.play();
+        adCurrentIndex = (adCurrentIndex + 1) % adEmbedCodes.length;
+        currentIndex = (currentIndex + 1) % embedCodes.length;
+        oplayer.setEmbedCode(embedCodes[currentIndex]);
+        oplayer.play();
+        });
+
+    }
